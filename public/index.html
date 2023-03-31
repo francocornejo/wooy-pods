@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/8aef54506b.js"
+      crossorigin="anonymous"
+    ></script>
+    <style type="text/css">
+      @font-face {
+        font-weight: 400;
+        font-style: normal;
+        font-family: circular;
+
+        src: url("chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Regular.woff2")
+          format("woff2");
+      }
+
+      @font-face {
+        font-weight: 500;
+        font-style: normal;
+        font-family: circular;
+
+        src: url("chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Medium.woff2")
+          format("woff2");
+      }
+
+      @font-face {
+        font-weight: 700;
+        font-style: normal;
+        font-family: circular;
+
+        src: url("chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2")
+          format("woff2");
+      }
+
+      @font-face {
+        font-weight: 900;
+        font-style: normal;
+        font-family: circular;
+
+        src: url("chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Black.woff2")
+          format("woff2");
+      }
+    </style>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title>Hackaton</title>
+  </head>
+  <body>
+    <header>
+      <div class="headerMain">
+        <img
+          style="border-radius: 4px"
+          src="../images/logo.png"
+          alt="company logo"
+          width="150"
+          height="50"
+        />
+        <button id="connect-button">Connect Wallet</button>
+      </div>
+    </header>
+    <main>
+      <div class="heroBanner">
+        <h2 style="font-size: 90px; font-weight: 700">JOIN ONCE,</h2>
+        <h2 style="font-size: 90px; font-weight: 700">GET INFINITE PRIZES</h2>
+        <span style="font-size: 30px; font-weight: 500"
+          >Get your collectibles</span
+        >
+        <span style="font-size: 30px; font-weight: 500"
+          >The
+          <span style="background-color: var(--secondary); border-radius: 4px"
+            >smart</span
+          >
+          and
+          <span style="background-color: var(--secondary); border-radius: 4px"
+            >rewarding</span
+          >
+          way to generate funds to support impact initiatives</span
+        >
+      </div>
+
+      <div class="statsBar">
+        <span style="background-color: var(--primary)"
+          >1.183
+          <span style="background-color: var(--secondary)"> PODs</span></span
+        >
+        <span style="background-color: var(--primary)"
+          >23
+          <span style="background-color: var(--secondary)">
+            Partners</span
+          ></span
+        >
+        <span style="background-color: var(--primary)"
+          >255
+          <span style="background-color: var(--secondary)"> Members</span></span
+        >
+      </div>
+      <img
+        class="svgDesktop"
+        style="position: absolute; z-index: -1; margin-top: 30px"
+        width="300"
+        src="../images/vector1.svg"
+        alt=""
+      />
+
+      <div class="divisor" style="height: 50px"></div>
+      <div class="whatIs">
+        <h2 style="font-size: 30px">What is WOOY</h2>
+        <img
+          class="svgDesktop"
+          style="
+            position: absolute;
+            z-index: -1;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            transform: rotate(60deg);
+            margin-top: -140px;
+          "
+          width="200"
+          src="../images/vector3.svg"
+          alt=""
+        />
+        <div class="divisor" style="height: 100px"></div>
+        <div class="cardsWhat">
+          <div class="cardWhat">
+            <h3>Blockchain</h3>
+            <p>
+              Wooy works as a <b>blockchain</b> saving account, where you can
+              deposit and withdraw everything whenever you want without any
+              lock-up periods, fees or risking your deposit.
+            </p>
+          </div>
+          <div class="cardWhat">
+            <img
+              class="svgDesktop"
+              style="position: absolute; z-index: -1; margin-left: 165px"
+              width="150"
+              src="../images/vector2.svg"
+              alt=""
+            />
+            <h3>Difference</h3>
+            <p style="margin-top: 30px">
+              But with the <b>difference</b> that, while you are subscribed, we
+              generate yield to help finance environmental initiatives.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="divisor" style="height: 20px"></div>
+      <img
+        class="svgDesktop"
+        style="
+          position: absolute;
+          z-index: -1;
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+        "
+        width="100%"
+        src="../images/vector7.svg"
+        alt=""
+      />
+      <div class="divisor" style="height: 100px"></div>
+      <div class="howItWorks">
+        <h2 style="font-size: 30px">How WOOY Works</h2>
+        <div class="cardsHow">
+          <div class="cardHow">
+            <p>
+              Wooy works as a blockchain saving account, where you can deposit
+              and withdraw everything whenever you want without any lock-up
+              periods, fees or risking your deposit.
+            </p>
+          </div>
+          <i
+            class="fa-solid fa-arrow-right"
+            style="display: flex; align-items: center; justify-content: center"
+          ></i>
+          <div class="cardHow">
+            <p>
+              The difference that, while you are subscribed, we generate yield
+              to help finance environmental initiatives.
+            </p>
+          </div>
+          <i
+            class="fa-solid fa-arrow-right"
+            style="display: flex; align-items: center; justify-content: center"
+          ></i>
+          <div class="cardHow">
+            <p>
+              As an incentive for everyone to get involved, we enable users to
+              win unique prizes and experiences as rewards for participating.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="webB">
+        <div class="webBHeader">
+          <h2>Your PODS</h2>
+          <div>
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Email"
+              style="height: 48px; border-radius: 4px; font-size: 18px"
+            />
+            <button id="search-button">Search</button>
+          </div>
+        </div>
+
+        <div class="webBBody">
+          <div class="podsContainer" id="pods-container">
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer-distributed">
+      <div class="footer-right">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+      </div>
+
+      <div class="footer-left">
+        <p class="footer-links">
+          <a class="link-1" href="#">Home</a>
+
+          <a href="#">About</a>
+
+          <a href="#">Faq</a>
+
+          <a href="#">Contact</a>
+        </p>
+
+        <p><img src="../images/footerLogo.png" alt="" width="50" /></p>
+      </div>
+    </footer>
+    <script src="js/metamaskConnect.js"></script>
+  </body>
+</html>

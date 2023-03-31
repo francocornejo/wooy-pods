@@ -1,6 +1,8 @@
-require('dotenv').config();
-const Web3 = require('web3');
-const contractAbi = require('./abi/wooyABI.json');
+import dotenv from 'dotenv';
+import Web3 from 'web3';
+import contractAbi from './abi/wooyABI.json' assert { type: "json" };
+dotenv.config();
+
 const web3 = new Web3('https://rpc-mumbai.maticvigil.com');
 
 const ownerPrivateKey = process.env.OWNER_PRIVATE_KEY;
@@ -17,7 +19,7 @@ const email = "cornejo.francodavid@gmail.com";
 const data = web3.utils.utf8ToHex(email);
 //console.log(data)
 
- function callSafeMint(tokenUser){
+export function callSafeMint(tokenUser){
     tokenUser.forEach(userTokenValue => { 
     web3.eth.accounts.wallet.add(ownerPrivateKey);
         contractInstance.methods.safeMint(ownerAccount, tokenURI, data).send({from: ownerAccount, gas: 300000})
@@ -33,12 +35,12 @@ const data = web3.utils.utf8ToHex(email);
      })
 } 
 
-async function recoveryToken(){
+export async function recoveryToken(){
     const recoveryTokenIdByHash = await contractInstance.methods.getTokenIdByUserToken(data).call()
     console.log(recoveryTokenIdByHash)
 }
 
-function callSafeTransferFrom(accountUser, tokenID){
+export function callSafeTransferFrom(accountUser, tokenID){
     contractInstance.methods.safeTransferFrom(ownerAccount, accountUser, tokenID).send({ from: ownerAccount, gas: 300000})
     .then((receipt) => {
       console.log('La transferencia se realizó con éxito');
