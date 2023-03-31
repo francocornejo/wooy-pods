@@ -10,6 +10,7 @@ const port = 8080;
 import path from 'path';
 import * as url from 'url';
 import { UsuarioRegister } from './public/usuarios/Usuarios.js';
+import { UsuarioRender } from './public/usuarios/filter.js';
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 app.use(express.static(path.join(__dirname, './public')));
@@ -23,6 +24,7 @@ app.get("/register", (req, res) => {
     res.sendFile(path.join(__dirname + './public/register.html'))
 })
 app.post("/register", UsuarioRegister)
+app.get("/users", UsuarioRender)
 
 //Conexion DB Mongo
 
