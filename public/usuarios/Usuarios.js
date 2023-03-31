@@ -12,6 +12,8 @@ export const UsuarioRegister = async ( req, res ) => {
         const arrayRegister = new UsersRegister(usuarios)
         await arrayRegister.save()
 
+        console.log(arrayRegister)
+
         res.sendFile(path.join(__dirname, '../index.html'))
 
     } catch (error) {

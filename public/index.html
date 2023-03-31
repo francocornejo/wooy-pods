@@ -213,6 +213,9 @@
             <button id="search-button">Search</button>
           </div>
         </div>
+        <div id="users">
+
+        </div>
 
         <div class="webBBody">
           <div class="podsContainer" id="pods-container">
@@ -258,5 +261,24 @@
       </div>
     </footer>
     <script src="js/metamaskConnect.js"></script>
+    <script>
+       
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            
+          const usuarios = this.responseText;
+            
+          const array = usuarios.filter()
+
+          console.log(usuarios)
+        }
+      };
+
+      xhttp.open("GET", "/users", true);
+      xhttp.send();
+
+    </script>
   </body>
 </html>
