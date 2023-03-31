@@ -1,6 +1,6 @@
 require('dotenv').config();
 const Web3 = require('web3');
-const contractAbi = require('./wooyABI.json');
+const contractAbi = require('./abi/wooyABI.json');
 const web3 = new Web3('https://rpc-mumbai.maticvigil.com');
 
 const ownerPrivateKey = process.env.OWNER_PRIVATE_KEY;
