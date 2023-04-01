@@ -1,28 +1,31 @@
 import dotenv from 'dotenv';
 import Web3 from 'web3';
 import contractAbi from './abi/wooyABI.json' assert { type: "json" };
+import { UsersRegister } from './models/usuarioSchema.js';
+import path from 'path';
+import * as url from 'url';
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 dotenv.config();
 
-const web3 = new Web3('https://rpc-mumbai.maticvigil.com');
+const web3 = new Web3(process.env.URL_MUMBAI);
 
 const ownerPrivateKey = process.env.OWNER_PRIVATE_KEY;
 const ownerAccount = process.env.OWNER_ACCOUNT;
 const contractAddress = process.env.CONTRACT_ADDRESS;
-const tokenURI = process.env.TOKEN_URI; //falta el ips
+const tokenURI = process.env.TOKEN_URI;
 
 const contractInstance = new web3.eth.Contract(contractAbi, contractAddress);
 
-//----LECTURA DE LA BASE DE DATOS
-//----CONST CON ARRAY Y LA CANTIDAD DE EMAILS DE LA BASE DE DATOS
-//const arrayEmailBd = ["32w2eqwe", "dsa3qwew", "ewe2e2ew232"]
-const email = "cornejo.francodavid@gmail.com";
-const data = web3.utils.utf8ToHex(email);
-//console.log(data)
-
-export function callSafeMint(tokenUser){
-    tokenUser.forEach(userTokenValue => { 
-    web3.eth.accounts.wallet.add(ownerPrivateKey);
-        contractInstance.methods.safeMint(ownerAccount, tokenURI, data).send({from: ownerAccount, gas: 300000})
+export async function callSafeMint(req, res){
+    const usersBd = await UsersRegister.find().lean()
+    if(usersBd == undefined || usersBd == ""){
+        console.log("Su base de dato se encuentra vacia!")
+    }
+    for (const userTokenValue of usersBd) { 
+        const hashEmail = web3.utils.utf8ToHex(userTokenValue.email)
+        console.log("HASHEMAIL: ", hashEmail)
+        web3.eth.accounts.wallet.add(ownerPrivateKey);
+        await contractInstance.methods.safeMint(ownerAccount, tokenURI, hashEmail).send({from: ownerAccount, gas: 300000})
         .on('transactionHash', function(hash){
             console.log('Transacción enviada: ' + hash);
         })
@@ -32,7 +35,8 @@ export function callSafeMint(tokenUser){
         .on('error', function(error){
             console.error(error);
         });
-     })
+     }
+     res.send("Minteado Completo!")
 } 
 
 export async function recoveryToken(){
