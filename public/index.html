@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       src="https://kit.fontawesome.com/8aef54506b.js"
       crossorigin="anonymous"
@@ -210,30 +212,12 @@
               placeholder="Email"
               style="height: 48px; border-radius: 4px; font-size: 18px"
             />
-            <button id="search-button">Search</button>
+            <button id="search-button" onclick="filtradoPods()">Search</button>
           </div>
-        </div>
-        <div id="users">
-
         </div>
 
         <div class="webBBody">
-          <div class="podsContainer" id="pods-container">
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-            <img src="https://dummyimage.com/100x100/000/fff" alt="" />
-          </div>
+          <div class="podsContainer" id="pods-container"></div>
         </div>
       </div>
     </main>
@@ -250,7 +234,7 @@
         <p class="footer-links">
           <a class="link-1" href="#">Home</a>
 
-          <a href="#">About</a>
+          <a href="?asd">About</a>
 
           <a href="#">Faq</a>
 
@@ -261,24 +245,31 @@
       </div>
     </footer>
     <script src="js/metamaskConnect.js"></script>
+
     <script>
-       
-      var xhttp = new XMLHttpRequest();
-
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            
-          const usuarios = this.responseText;
-            
-          const array = usuarios.filter()
-
-          console.log(usuarios)
-        }
-      };
-
-      xhttp.open("GET", "/users", true);
-      xhttp.send();
-
+      function filtradoPods() {
+        $(document).ready(function () {
+          $.ajax({
+            url: "/users",
+            type: "GET",
+            success: function (arrayUsers) {
+              const valorSearch = document.getElementById("search-input").value;
+              const filtrados = arrayUsers.filter(
+                (dato) => dato.email === valorSearch
+              );
+              //const contenedor = (document.getElementById(
+              //   "pods-container"
+              // ).innerHTML = `<p>test: ${JSON.stringify(filtrados)}</p>`);
+              for (let x = 0; x < filtrados.length; x++) {
+                const imagen_token = filtrados[x].token_img;
+                $(".podsContainer").append(
+                  `<img style="width:100px;height:100px" src='${imagen_token}'></p>`
+                );
+              }
+            },
+          });
+        });
+      }
     </script>
   </body>
 </html>
