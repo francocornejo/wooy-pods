@@ -2,20 +2,18 @@ import dotenv from 'dotenv';
 import Web3 from 'web3';
 import contractAbi from './abi/wooyABI.json' assert { type: "json" };
 import { UsersRegister } from './models/usuarioSchema.js';
-import path from 'path';
-import * as url from 'url';
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 dotenv.config();
 
 const web3 = new Web3(process.env.URL_MUMBAI);
-
 const ownerPrivateKey = process.env.OWNER_PRIVATE_KEY;
 const ownerAccount = process.env.OWNER_ACCOUNT;
 const contractAddress = process.env.CONTRACT_ADDRESS;
 const tokenURI = process.env.TOKEN_URI;
 
+//Instancia del contrato
 const contractInstance = new web3.eth.Contract(contractAbi, contractAddress);
 
+//Minteamos PODs por cada usuario registrado en la base de datos
 export async function callSafeMint(req, res){
     const usersBd = await UsersRegister.find().lean()
     if(usersBd == undefined || usersBd == ""){
@@ -35,15 +33,17 @@ export async function callSafeMint(req, res){
         .on('error', function(error){
             console.error(error);
         });
-     }
-     res.send("Minteado Completo!")
+    }
+    res.send("Minteado Completo!")
 } 
 
-export async function recoveryToken(){
-    const recoveryTokenIdByHash = await contractInstance.methods.getTokenIdByUserToken(data).call()
-    console.log(recoveryTokenIdByHash)
+//Recuperamos el tokenID del NFT que esta bindeado con el hash del email 
+export async function recoveryToken(accountUser, emailHash){
+    const recoveryTokenIdByHash = await contractInstance.methods.getTokenIdByUserToken(emailHash).call()
+    callSafeTransferFrom(accountUser, recoveryTokenIdByHash)
 }
 
+//Se transfiere el NFT para el usuario, pasandole como parametro el tokenID que se recupera de la funcion reveryToken()
 export function callSafeTransferFrom(accountUser, tokenID){
     contractInstance.methods.safeTransferFrom(ownerAccount, accountUser, tokenID).send({ from: ownerAccount, gas: 300000})
     .then((receipt) => {
@@ -53,8 +53,3 @@ export function callSafeTransferFrom(accountUser, tokenID){
       console.error('La transferencia falló', error);
     });
 }
-
-
-//Para agregar la waller a la red de polygon mumbai, ejecutar : 
-    //const account2 = web3.eth.accounts.privateKeyToAccount(process.env.OWNER_PRIVATE_KEY);
-    //web3.eth.accounts.wallet.add(account2);
