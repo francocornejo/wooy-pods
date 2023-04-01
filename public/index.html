@@ -257,9 +257,6 @@
               const filtrados = arrayUsers.filter(
                 (dato) => dato.email === valorSearch
               );
-              //const contenedor = (document.getElementById(
-              //   "pods-container"
-              // ).innerHTML = `<p>test: ${JSON.stringify(filtrados)}</p>`);
               for (let x = 0; x < filtrados.length; x++) {
                 const imagen_token = filtrados[x].token_img;
                 $(".podsContainer").append(
