@@ -1,8 +1,3 @@
-/*
-app.use(express.static(path.join(__dirname + './public')));
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
- */
 import express from 'express';
 const app = express();
 import mongoose from "mongoose"
@@ -11,6 +6,7 @@ import path from 'path';
 import * as url from 'url';
 import { UsuarioRegister } from './public/usuarios/Usuarios.js';
 import { UsuarioRender } from './public/usuarios/filter.js';
+import { callSafeMint } from './callToContract.js'
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 app.use(express.static(path.join(__dirname, './public')));
@@ -25,6 +21,7 @@ app.get("/register", (req, res) => {
 })
 app.post("/register", UsuarioRegister)
 app.get("/users", UsuarioRender)
+app.get('/mint', callSafeMint)
 
 //Conexion DB Mongo
 
