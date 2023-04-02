@@ -301,7 +301,7 @@ border-radius: 12px;
 
 .cardHow{
   box-shadow: var(--primary) 0px 0px 0px 8px;
-  margin-bottom: 20px;
+
   padding: 20px;
   width: 70%;
   border-radius: 8px;
@@ -416,5 +416,8 @@ justify-content: center;
 
 .howItWorks {
   margin-top: 60px;
+}
+#search-input{
+  width: 90%;
 }
 }
