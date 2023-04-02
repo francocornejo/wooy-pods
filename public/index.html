@@ -201,30 +201,7 @@
       <div class="divisor" style="height: 100px"></div>
       <div class="webB">
         <div class="webBHeader">
-          <img class="svgDesktop"
-          style="
-            position: absolute;
-            z-index: -1;
-            left: 0;
-            right:0;
-            transform: rotate(180deg);
-            
-          "
-          width="200"
-          src="../images/vector5.svg"
-          alt=""
-        />
-        <div class="webBHeader">
-          <img class="svgDesktop"
-          style="
-            position: absolute;
-            z-index: -1;
-            transform: scaley(-1);
-          "
-          width="200"
-          src="../images/vector5.svg"
-          alt=""
-        />
+          
           <h2>Your PODS</h2>
           <div>
             <input
@@ -238,7 +215,7 @@
         </div>
 
         <div class="webBBody">
-          <div class="podsContainer" id="pods-container"></div>
+          <div class="podsContainer" id="pods-container" style="display:none"></div>
         </div>
       </div>
     </main>
@@ -268,20 +245,41 @@
     <script src="js/metamaskConnect.js"></script>
 
     <script>
-      function filtradoPods() {
+    function filtradoPods() {
+        document
+          .getElementById("search-button")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+          });
         $(document).ready(function () {
           $.ajax({
             url: "/users",
             type: "GET",
             success: function (arrayUsers) {
+              $(".podsContainer").empty();
+              $(".podsContainer").css("display", "flex");
               const valorSearch = document.getElementById("search-input").value;
               const filtrados = arrayUsers.filter(
                 (dato) => dato.email === valorSearch
               );
-              for (let x = 0; x < filtrados.length; x++) {
-                const imagen_token = filtrados[x].token_img;
+
+              if (filtrados.length > 0) {
+                for (let x = 0; x < filtrados.length; x++) {
+                  const imagen_token = filtrados[x].token_img;
+                  const url_site = filtrados[x].site_url;
+                  const nombre_token = filtrados[x].token_name;
+                  $(".podsContainer").append(
+                    `<div class="appeneados" id="appeneados">
+                      <a href="pages/ongs${url_site}.html">
+                      <img style="width:100px;height:100px" src='${imagen_token}'>
+                      <p style="text-align:center">${nombre_token}</p>
+                      </a>  
+                    </div>`
+                  );
+                }
+              } else {
                 $(".podsContainer").append(
-                  `<img style="width:100px;height:100px" src='${imagen_token}'></p>`
+                  `<p>No hay ningun pod asociado al Email</p>`
                 );
               }
             },
