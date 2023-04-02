@@ -155,7 +155,7 @@ body{
   }
 }
 
-#connect-button, #search-button, #gotosearch-button, #submit{
+#connect-button, #search-button, #gotosearch-button, #submit, #buttonRegister{
     align-items: center;
     appearance: none;
     background-color: var(--primary);
@@ -684,4 +684,9 @@ label{
     width: 90%;
     text-align: center;
   }
+}
+
+.navOng{
+  background-color: var(--secondary);
+  margin-bottom: 20px;
 }
