@@ -41,12 +41,13 @@ Trabajamos con ONGs para regalarle NFT PODs (proof of donations) a los donantes 
 Detallaremos exhaustivamente los pasos del proceso para que puedan adquirir un conocimiento profundo sobre el proyecto.
 
 1. Una ONG se une a nuestra iniciativa.
-2. Realizamos la implementación del **smart contract** en la plataforma de Remix.
-3. La ONG nos proporciona semanalmente su base de datos de donantes por correo electrónico.
+2. Realizamos la implementación del **smart contract** en Hardhat.
+3. La ONG nos proporciona semanalmente su base de datos de donantes por correo electrónico. (siempre y cuando el usuario acepte que su mail se comparta en una base de datos a Wooy)
 4. Generamos un hash de los correos electrónicos recibidos.
 5. Si nuestra base de datos consta de, por ejemplo, 5 correos electrónicos, creamos 5 tokens únicos denominados PODs, cada uno asociado a su correspondiente hash de correo electrónico.
-6. Los usuarios pueden acceder al sitio web y buscar su POD ingresando su correo electrónico en el campo de búsqueda correspondiente.
-7. Una vez encontrado, el usuario puede optar por transferir su POD a su billetera digital completando el formulario de solicitud de transferencia de POD mediante el siguiente enlace: 
+6. Se le envía al usuario un Email con su POD, invitandolo a reclamarlo en el sitio web de Wooy.
+8. Los usuarios pueden acceder al sitio web y buscar su POD ingresando su correo electrónico en el campo de búsqueda correspondiente.
+9. Una vez encontrado, el usuario puede optar por transferir su POD a su billetera digital completando el formulario de solicitud de transferencia de POD mediante el siguiente enlace: 
 
   >	 `www.localhost:8080/pages/ongs/{Nombre-del-pods}.html` 
 
@@ -67,7 +68,10 @@ Detallaremos exhaustivamente los pasos del proceso para que puedan adquirir un c
 4. ¿Que beneficios tiene la colección de PODs?
 - Demuestra tu compromiso y apoyo hacia la causa y ONG a las que has donado. A largo plazo, podrás obtener mayores beneficios y recompensas
 
-### Contruido con:
+5. ¿Cómo gana wooy?
+- Los PODs brindan una oportunidad única para que las ONGs creen nuevas campañas B2B con empresas y así lograr recaudar los fondos suficientes para sus campañas. En Wooy, ofrecemos a estas empresas campañas de marketing innovadora en donde estas pueden ofrecerle a los poseedores de PODs beneficios exclusivos por ayudar a la campaña de recaudación.
+
+### Construido con:
 
 - Hardhat
 - Web3
