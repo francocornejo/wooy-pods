@@ -25,7 +25,7 @@ app.get('/mint', callSafeMint)
 
 //Conexion DB Mongo
 
-mongoose.connect("mongodb+srv://fedec123:fedec123@cluster0.vrgmt0m.mongodb.net/?retryWrites=true&w=majority").then(() => console.log ("Base de datos conectada"))
+mongoose.connect("mongodb+srv://fedec123:fedec123@cluster0.begezap.mongodb.net/?retryWrites=true&w=majority").then(() => console.log ("Base de datos conectada"))
 
 app.listen(port, (err) => {
     if(!err){
